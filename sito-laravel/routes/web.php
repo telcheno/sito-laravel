@@ -7,5 +7,15 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return view('index');
+    return view('index', [
+        'pageTitle' => 'Home',
+        'metaTitle' => 'Home del sitio',
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('about', [
+        'pageTitle' => 'About',
+        'metaTitle' => 'About del sitio',
+    ]);
 });
