@@ -19,3 +19,15 @@ Route::get('/about', function () {
         'metaTitle' => 'About del sitio',
     ]);
 });
+Route::get('/services', function () {
+    return view('services', [
+        'pageTitle' => 'Services',
+        'metaTitle' => 'Services del sitio',
+    ]);
+});
+Route::get('/contact', function () {
+    return view('contact', [
+        'pageTitle' => 'Contact',
+        'metaTitle' => 'Contact del sitio',
+    ]);
+});
