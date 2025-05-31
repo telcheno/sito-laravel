@@ -1,7 +1,8 @@
 <?php
 
+use App\Models\Cita;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use App\Models\Citas;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,29 +33,18 @@ Route::get('/contact', function () {
         'metaTitle' => 'Contact del sitio',
     ]);
 });
-Route::get('/citas', function () {
-    // return view('citas', [
-    //     'pageTitle' => 'Citas',
-    //     'metaTitle' => 'Citas del sitio',
-    // ]);
-    $citas = Citas::all();
 
-    return view('citas.index', [
+Route::get('/posts', function(){
+    $posts = Post::all();
+
+    return view('posts.index', [ 'posts' => $posts ]);
+})->name('posts.index');
+
+Route::get('/citas', function(){
+    $citas = Cita::all();
+
+    return view('citas.index', [ 
+        'citas' => $citas,
         'pageTitle' => 'Citas',
-        'metaTitle' => 'Citas del sitio',
-        'citas' => $citas,
-    ]);
+        'metaTitle' => 'Citas del sitio', ]);
 })->name('citas.index');
-
-Route::get('/citas/create', function () {
-    $citas = Citas::create([
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
-
-    return view('citas.create', [
-        'pageTitle' => 'Crear Cita',
-        'metaTitle' => 'Crear Cita del sitio',
-        'citas' => $citas,
-    ]);
-})->name('citas.create'); ;
